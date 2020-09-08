@@ -97,7 +97,6 @@ def autoextract(inputfile, outputfile):
                         for j in range(1, mc + 1):
                             # reading cell value from source excel file
                             c = ws1.cell(row=i, column=j)
-
                             # writing the read value to destination excel file
                             ws2.cell(row=lastrow + 1, column=j).value = c.value
 
