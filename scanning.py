@@ -94,13 +94,12 @@ def autoextract(inputfile, outputfile):
                 if tempText:
                     if tempText.startswith(prefixKeyword):
                         lastrow = len(ws2['A'])  # Check the last row of Column A for appending.
-                        ws2.cell(row=lastrow + 1, column=1).value = ws1.title
                         for j in range(1, mc + 1):
                             # reading cell value from source excel file
                             c = ws1.cell(row=i, column=j)
 
                             # writing the read value to destination excel file
-                            ws2.cell(row=lastrow + 1, column=j + 1).value = c.value
+                            ws2.cell(row=lastrow + 1, column=j).value = c.value
 
     # saving the destination excel file
     wb2.save(str(filename1))
