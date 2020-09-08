@@ -82,8 +82,7 @@ def autoextract(inputfile, outputfile):
         ws2['G1'].font = Font(bold=True)
         ws2['H1'].font = Font(bold=True)
 
-        # Counter to count the number of devices in a network.
-        count = 0
+
 
         # copying the cell values from source
         # excel file to destination excel file
@@ -95,7 +94,6 @@ def autoextract(inputfile, outputfile):
                 if tempText:
                     if tempText.startswith(prefixKeyword):
                         lastrow = len(ws2['A'])  # Check the last row of Column A for appending.
-                        count += 1
                         ws2.cell(row=lastrow + 1, column=1).value = ws1.title
                         for j in range(1, mc + 1):
                             # reading cell value from source excel file
