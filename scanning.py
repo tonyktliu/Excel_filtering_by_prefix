@@ -86,19 +86,18 @@ def autoextract(inputfile, outputfile):
 
         # copying the cell values from source
         # excel file to destination excel file
-        for i in range(1, mr + 1):
-            if i > 2:
-                tempText = ws1.cell(row=i, column=referVal).value
+        for i in range(2, mr + 1): # not start from 1 as row 1 is the header
+            tempText = ws1.cell(row=i, column=referVal).value
 
-                # Only compare with Keyword when the cell is NOT empty.
-                if tempText:
-                    if tempText.startswith(prefixKeyword):
-                        lastrow = len(ws2['A'])  # Check the last row of Column A for appending.
-                        for j in range(1, mc + 1):
-                            # reading cell value from source excel file
-                            c = ws1.cell(row=i, column=j)
-                            # writing the read value to destination excel file
-                            ws2.cell(row=lastrow + 1, column=j).value = c.value
+            # Only compare with Keyword when the cell is NOT empty.
+            if tempText:
+                if tempText.startswith(prefixKeyword):
+                    lastrow = len(ws2['A'])  # Check the last row of Column A for appending.
+                    for j in range(1, mc + 1):
+                        # reading cell value from source excel file
+                        c = ws1.cell(row=i, column=j)
+                        # writing the read value to destination excel file
+                        ws2.cell(row=lastrow + 1, column=j).value = c.value
 
     # saving the destination excel file
     wb2.save(str(filename1))
